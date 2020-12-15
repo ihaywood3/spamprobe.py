@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Copyright (C) 2020 Ian Haywood
 # Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the “Software”), to
+# of this software and associated documentation files (the "Software"), to
 # deal in the Software without restriction, including without limitation the
 # rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
 # sell copies of the Software, and to permit persons to whom the Software is
@@ -40,7 +40,7 @@ import datetime
 import re
 import argparse
 from html.parser import HTMLParser
-import pudb, pdb
+
 
 class _MyHTMLParser(HTMLParser):
 
@@ -323,9 +323,11 @@ if __name__ == '__main__':
     ap4.set_defaults(func=cmd_dump)
     args = ap.parse_args()
     with shelve.open(os.path.expanduser("~/.local/spamprobe.words.db")) as words_db, shelve.open(os.path.expanduser("~/.local/spamprobe.messages.db")) as msg_db:
-        args.func(ap, args, words_db, msg_db)
- 
-        
+        if hasattr(args,"func"):
+            args.func(ap, args, words_db, msg_db)
+        else:
+            ap.print_help()
+            #pass
         
         
         
