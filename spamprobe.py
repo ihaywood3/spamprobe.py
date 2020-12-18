@@ -26,7 +26,7 @@ can be úsed as a module, refer to functions 'learn' and 'probe'.
 Both take a pair of dict-like objects (words_db and msg_db) which must be 
 persisted by the caller. 
 
-can also be used on the command line, run with "h" to see options. 
+can also be used on the command line, run with "-h" to see options. 
 """
 
 
